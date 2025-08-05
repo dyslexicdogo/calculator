@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lower Body Calculator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/lowerbody.css">
+</head>
+<body>
+    <header>
+        <h1>Whole body Body Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Exercise</th>
+                            <th>Weight (kg)</th>
+                            <th>Reps</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Leg Press</td>
+                            <td><input type="number" name="legpress_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="legpress_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Seated lat pull down</td>
+                            <td><input type="number" name="legextension_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="legextension_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Crunch</td>
+                            <td><input type="number" name="crunch_weight" min="0" step="any"></td>
+                            <td><input type="number" name="crunch_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Kettle swings</td>
+                            <td><input type="number" name="rdl_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="rdl_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Dumbell bench Press</td>
+                            <td><input type="number" name="gobletsquat_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="gobletsquat_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Dumbell one arm rows</td>
+                            <td><input type="number" name="stepups_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="stepups_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Dips</td>
+                            <td><input type="number" name="lunges_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="lunges_reps" min="0" required></td>
+                        </tr>
+                        <tr>
+                            <td>Goblet squats</td>
+                            <td><input type="number" name="calfraise_weight" min="0" step="any" required></td>
+                            <td><input type="number" name="calfraise_reps" min="0" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: center;">
+                    <button type="submit" class="workout-btn lower" style="margin-top: 20px;">Submit</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>

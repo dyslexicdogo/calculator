@@ -6,7 +6,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6676bc 0%, #1d54cb 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -17,23 +17,22 @@
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(9, 34, 134, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.2);
         }
 
         h1 {
             font-size: 3rem;
             margin-bottom: 40px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background: white;
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient 3s ease infinite;
         }
 
         @keyframes gradient {
@@ -77,27 +76,27 @@
         }
 
         .workout-btn.lower {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.254), rgba(128, 128, 128, 0.185));
         }
 
         .workout-btn.lower:hover {
-            background: linear-gradient(45deg, #44a08d, #4ecdc4);
+            background: linear-gradient(45deg,  rgba(128, 128, 128, 0.185), rgba(255, 255, 255, 0.254));
         }
 
         .workout-btn.upper {
-            background: linear-gradient(45deg, #45b7d1, #96c93d);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.254), rgba(128, 128, 128, 0.185));
         }
 
         .workout-btn.upper:hover {
-            background: linear-gradient(45deg, #96c93d, #45b7d1);
+            background: linear-gradient(45deg,  rgba(128, 128, 128, 0.185), rgba(255, 255, 255, 0.254));
         }
 
         .workout-btn.whole {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.254), rgba(128, 128, 128, 0.185));
         }
 
         .workout-btn.whole:hover {
-            background: linear-gradient(45deg, #f5576c, #f093fb);
+            background: linear-gradient(45deg,  rgba(128, 128, 128, 0.185), rgba(255, 255, 255, 0.254));
         }
 
         @media (max-width: 768px) {
