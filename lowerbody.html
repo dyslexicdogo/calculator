@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/lowerbody.css">
 </head>
+<script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'login.html';
+    }
+</script>
 <body>
     <header>
         <h1>Lower Body Calculator</h1>
