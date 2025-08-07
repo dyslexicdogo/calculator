@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Pogo</title>
     <link rel="stylesheet" href="css/styles.css">
-<script>
-    if (localStorage.getItem('isLoggedIn') !== 'true') {
-        window.location.href = 'login.html';
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    if (!session) {
+      // No logged-in user
+      window.location.href = 'login.html';
     }
+  });
 </script>
+
 </head>
 <body>
     <div class="container">
