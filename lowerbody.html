@@ -76,7 +76,23 @@
             </form>
         </section>
     </main>
-    <footer>
-    </footer>
+    <script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  const supabase = createClient(
+    'https://azhfffcwewjctoamaemd.supabase.co',
+    'sb_publishable_HvjfhJYmK9zm94ra3LheoA_HtB5fplr'
+  );
+
+  // Check if a session exists
+  const { data: { session } } = await supabase.auth.getSession();
+
+  if (!session) {
+    // Not logged in → redirect to login page
+    window.location.href = 'login.html';
+  } else {
+    console.log("User is logged in:", session.user.email);
+  }
+</script>
 </body>
 </html>

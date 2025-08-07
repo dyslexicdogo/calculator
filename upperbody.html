@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = 'login.html';
-        }
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lower Body Calculator</title>
@@ -18,7 +13,7 @@
     </header>
     <main>
         <section>
-            <form>
+            <form id="workoutForm">
                 <table>
                     <thead>
                         <tr>
@@ -30,43 +25,43 @@
                     <tbody>
                         <tr>
                             <td>Incline Bench Press</td>
-                            <td><input type="number" name="legpress_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="legpress_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Seated Row</td>
-                            <td><input type="number" name="legextension_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="legextension_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Seated lat pulldown</td>
-                            <td><input type="number" name="crunch_weight" min="0" step="any"></td>
-                            <td><input type="number" name="crunch_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Dumbell shoulder press</td>
-                            <td><input type="number" name="rdl_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="rdl_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Dumbell Biceps curls</td>
-                            <td><input type="number" name="gobletsquat_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="gobletsquat_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Dumbell Triceps extension</td>
-                            <td><input type="number" name="stepups_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="stepups_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Assisted Pull ups</td>
-                            <td><input type="number" name="lunges_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="lunges_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                         <tr>
                             <td>Hanging leg raises</td>
-                            <td><input type="number" name="calfraise_weight" min="0" step="any" required></td>
-                            <td><input type="number" name="calfraise_reps" min="0" required></td>
+                            <td><input type="number" name="weight" required></td>
+                            <td><input type="number" name="reps" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -76,7 +71,6 @@
             </form>
         </section>
     </main>
-    <footer>
-    </footer>
+<script type="module" src="js/upper.js"></script>
 </body>
 </html>
