@@ -3,27 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Pogo</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script>
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    if (!session) {
-      // No logged-in user
-      window.location.href = 'login.html';
-    }
-  });
-</script>
-
+  const SUPABASE_URL = 'https://azhfffcwewjctoamaemd.supabase.co'; // Replace with your URL
+  const SUPABASE_KEY = 'sb_publishable_HvjfhJYmK9zm94ra3LheoA_HtB5fplr'; // Replace with your anon key
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome Pogo</h1>
-        <div class="button-container">
-            <a href="lowerbody.html" class="workout-btn lower">Lower Body</a>
-            <a href="upperbody.html" class="workout-btn upper">Upper Body</a>
-            <a href="wholebody.html" class="workout-btn whole">Whole Body</a>
-        </div>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit" class="workout-btn lower">Login</button>
+        </form>
+        <div id="loginError" style="color: #ff6b6b; margin-top: 10px; display: none;">Invalid credentials. Try again.</div>
     </div>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = loginForm.email.value;
+            const password = loginForm.password.value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                loginError.style.display = 'block';
+            } else {
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html'; // Redirect to the main page after successful login
+            }
+        });
+    </script>
 </body>
 </html>
