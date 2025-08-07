@@ -6,12 +6,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script>
-  const SUPABASE_URL = 'https://azhfffcwewjctoamaemd.supabase.co'; // Replace with your URL
-  const SUPABASE_KEY = 'sb_publishable_HvjfhJYmK9zm94ra3LheoA_HtB5fplr'; // Replace with your anon key
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    </script>
 </head>
 <body>
     <div class="login-container">
@@ -23,27 +17,38 @@
         </form>
         <div id="loginError" style="color: #ff6b6b; margin-top: 10px; display: none;">Invalid credentials. Try again.</div>
     </div>
-    <script>
-        const loginForm = document.getElementById('loginForm');
-        const loginError = document.getElementById('loginError');
+    <script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-        loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const email = loginForm.email.value;
-            const password = loginForm.password.value;
+  const SUPABASE_URL = 'https://azhfffcwewjctoamaemd.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_HvjfhJYmK9zm94ra3LheoA_HtB5fplr';
 
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password
-            });
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-            if (error) {
-                loginError.style.display = 'block';
-            } else {
-                localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'index.html'; // Redirect to the main page after successful login
-            }
-        });
-    </script>
+  const loginForm = document.getElementById('loginForm');
+  const loginError = document.getElementById('loginError');
+
+  loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      loginError.style.display = 'block';
+      console.error('Login failed:', error.message);
+    } else {
+      loginError.style.display = 'none';
+      console.log('Login success:', data);
+      localStorage.setItem('isLoggedIn', 'true');
+      window.location.href = 'menu.html';
+    }
+  });
+</script>
+
 </body>
 </html>
