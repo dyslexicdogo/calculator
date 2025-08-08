@@ -21,6 +21,43 @@ window.addEventListener('DOMContentLoaded', async () => {
   const today = new Date().toISOString().split('T')[0];
   const tag = 'upper';
 
+  // Show last weight and reps for each exercise
+  const rows = workoutForm.querySelectorAll('tbody tr');
+  for (const row of rows) {
+    const name_exercise = row.cells[0].textContent.trim();
+
+    // Add a cell for last values if not present
+    let lastCell = row.querySelector('.last-values');
+    if (!lastCell) {
+      lastCell = document.createElement('td');
+      lastCell.className = 'last-values';
+      lastCell.style.fontSize = '0.9em';
+      lastCell.style.color = '#888';
+      row.appendChild(lastCell);
+    }
+
+    // Fetch any previous entry for this exercise (ignore date)
+    try {
+      const { data, error } = await supabase
+        .from('workout_entries')
+        .select('weight, reps')
+        .eq('user_id', userId)
+        .eq('tag', tag)
+        .eq('name_exercise', name_exercise)
+        .limit(1);
+
+      if (error) {
+        lastCell.textContent = 'Error loading last';
+      } else if (Array.isArray(data) && data.length > 0 && data[0].weight !== undefined && data[0].reps !== undefined) {
+        lastCell.textContent = `Last: ${data[0].weight}kg x ${data[0].reps}`;
+      } else {
+        lastCell.textContent = 'No previous entry';
+      }
+    } catch (err) {
+      lastCell.textContent = 'Error loading last';
+    }
+  }
+
   workoutForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
