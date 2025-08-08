@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lower Body Calculator</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/lowerbody.css">
+    <link rel="stylesheet" href="css/forms.css">
 </head>
-<script>
-    if (localStorage.getItem('isLoggedIn') !== 'true') {
-        window.location.href = 'login.html';
-    }
-</script>
 <body>
     <header>
         <h1>Lower Body Calculator</h1>
     </header>
-    <main>
+
+    <main class="container">
         <section>
             <form id="workoutForm">
                 <table>
@@ -28,54 +23,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Leg Press</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Leg Extension</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Crunch</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Romanian Deadlift</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Goblet Squat</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Step Ups</td>
-                           <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Lunges</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
-                        <tr>
-                            <td>Standing Calf Raise</td>
-                            <td><input type="number" name="weight" required></td>
-                            <td><input type="number" name="reps" required></td>
-                        </tr>
+                        <tr><td>Leg Press</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Leg Extension</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Crunch</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Romanian Deadlift</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Goblet Squat</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Step Ups</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Lunges</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
+                        <tr><td>Standing Calf Raise</td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="weight" required></td><td><input type="number" inputmode="numeric" pattern="[0-9]*" name="reps" required></td></tr>
                     </tbody>
                 </table>
-                <div style="text-align: center;">
-                    <button type="submit" class="workout-btn lower" style="margin-top: 20px;">Submit</button>
+                <div class="button-container">
+                    <button type="submit" class="workout-btn upper">Submit</button>
                 </div>
             </form>
         </section>
     </main>
+
     <script type="module" src="js/lower.js"></script>
 </body>
 </html>
