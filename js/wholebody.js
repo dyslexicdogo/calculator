@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const userId = session.user.id;
   const workoutForm = document.getElementById('workoutForm');
   const today = new Date().toISOString().split('T')[0];
-  const tag = 'upper';
+  const tag = 'wholebody'; 
 
   workoutForm.addEventListener('submit', async (event) => {
     event.preventDefault();
