@@ -1,4 +1,3 @@
-// js/upper.js
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 // Create Supabase client
@@ -7,10 +6,8 @@ const supabase = createClient(
   'sb_publishable_HvjfhJYmK9zm94ra3LheoA_HtB5fplr'
 );
 
-// Wait for DOM to load before working with form
 window.addEventListener('DOMContentLoaded', async () => {
   const { data: { session } } = await supabase.auth.getSession();
-
   if (!session) {
     window.location.href = 'index.html';
     return;
@@ -19,14 +16,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   const userId = session.user.id;
   const workoutForm = document.getElementById('workoutForm');
   const today = new Date().toISOString().split('T')[0];
-  const tag = 'upper';
+  const tag = workoutForm.dataset.tag; // get from HTML
 
-  // Show last weight and reps for each exercise
+  // Show last values for each exercise
   const rows = workoutForm.querySelectorAll('tbody tr');
   for (const row of rows) {
     const name_exercise = row.cells[0].textContent.trim();
 
-    // Add a cell for last values if not present
     let lastCell = row.querySelector('.last-values');
     if (!lastCell) {
       lastCell = document.createElement('td');
@@ -36,7 +32,6 @@ window.addEventListener('DOMContentLoaded', async () => {
       row.appendChild(lastCell);
     }
 
-    // Fetch any previous entry for this exercise (ignore date)
     try {
       const { data, error } = await supabase
         .from('workout_entries')
@@ -49,16 +44,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 
       if (error) {
         lastCell.textContent = 'Error loading last';
-      } else if (Array.isArray(data) && data.length > 0 && data[0].weight !== undefined && data[0].reps !== undefined) {
+      } else if (data?.length > 0) {
         lastCell.textContent = `Last: ${data[0].weight}kg x ${data[0].reps}`;
       } else {
         lastCell.textContent = 'No previous entry';
       }
-    } catch (err) {
+    } catch {
       lastCell.textContent = 'Error loading last';
     }
   }
 
+  // Form submit
   workoutForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -70,20 +66,11 @@ window.addEventListener('DOMContentLoaded', async () => {
       const weight = Number(row.querySelector('input[name="weight"]').value);
       const reps = Number(row.querySelector('input[name="reps"]').value);
 
-      // Only push rows with valid data
       if (!isNaN(weight) && !isNaN(reps)) {
-        entries.push({
-          date: today,
-          name_exercise,
-          weight,
-          reps,
-          tag,
-          user_id: userId
-        });
+        entries.push({ date: today, name_exercise, weight, reps, tag, user_id: userId });
       }
     });
 
-    // Insert into Supabase
     const { error } = await supabase.from('workout_entries').insert(entries);
 
     if (error) {
